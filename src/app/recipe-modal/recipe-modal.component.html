@@ -54,18 +54,21 @@
         <div class="col-3 recipe-info-label">{{message('ingredientsHeader')}}</div>
         <div class="col recipe-info">
           <div class="recipe-element row" *ngFor="let ingredient of recipe.ingredients">
-            <div class="col-8">
+            <div class="col-6">
               <img [alt]=ingredient.item.name
                    [ngStyle]=imageService.getItemImgStyle(ingredient.item)
                    [ngClass]="ingredient.reducible ? 'reducible-item' : 'static-item'"
                    class="itemSprite modal-sprite mr-2" [src]="imageService.imageTemplateUrl">
               {{ingredient.item.name}}
             </div>
-            <div class="col-4 text-right d-flex align-items-center">
+            <div class="col-4 text-right d-flex align-items-right">
               <input [value]="ingredient.quantity"
                      class="priceDisplay form-control darker-input read-only recipe-input"
                      readonly type="text">
-            </div>
+              <input [value]="ingredient.price | number: '1.0-2'"
+                     class="priceDisplay form-control darker-input read-only recipe-input"
+                     readonly type="text">
+              </div>
           </div>
         </div>
       </div>
